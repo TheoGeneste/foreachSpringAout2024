@@ -56,6 +56,9 @@ public class Etudiants {
         this.telephone = telephone;
     }
 
+    public void sePresenter(){
+        System.out.println("Bonjour je m'appelle "+ this.nom + " " +this.prenom);
+    }
     
     
 }
