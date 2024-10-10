@@ -1,6 +1,6 @@
 package foreach.cda.Model;
 
-public class Etudiants {
+public class Etudiant {
 
     private int id;
     private String nom;
@@ -8,7 +8,7 @@ public class Etudiants {
     private String email;
     private String telephone;
 
-    public Etudiants(int id, String nom, String prenom, String email, String telephone) {
+    public Etudiant(int id, String nom, String prenom, String email, String telephone) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;

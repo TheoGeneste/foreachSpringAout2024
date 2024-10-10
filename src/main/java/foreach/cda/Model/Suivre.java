@@ -1,19 +1,19 @@
 package foreach.cda.Model;
 
 public class Suivre {
-    private Etudiants etudiants;
+    private Etudiant etudiants;
     private Cours cours;
 
-    public Suivre(Etudiants etudiants, Cours cours) {
+    public Suivre(Etudiant etudiants, Cours cours) {
         this.etudiants = etudiants;
         this.cours = cours;
     }
 
-    public Etudiants getEtudiants() {
+    public Etudiant getEtudiants() {
         return etudiants;
     }
 
-    public void setEtudiants(Etudiants etudiants) {
+    public void setEtudiants(Etudiant etudiants) {
         this.etudiants = etudiants;
     }
 

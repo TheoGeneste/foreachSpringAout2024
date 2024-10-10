@@ -5,13 +5,13 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import foreach.cda.Model.Etudiants;
+import foreach.cda.Model.Etudiant;
 
-public class EtudiantWrapper implements RowMapper<Etudiants> {
+public class EtudiantWrapper implements RowMapper<Etudiant> {
 
     @Override
-    public Etudiants mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Etudiants(
+    public Etudiant mapRow(ResultSet rs, int rowNum) throws SQLException {
+        return new Etudiant(
             rs.getInt("Id"), 
             rs.getString("Nom"), 
             rs.getString("Prenom"), 

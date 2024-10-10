@@ -7,9 +7,9 @@ public class Absences {
     private Date dateDebut;
     private Date dateFin;
     private String type;
-    private Etudiants etudiants;
+    private Etudiant etudiants;
 
-    public Absences(int id, Date dateDebut, Date dateFin, String type, Etudiants etudiants) {
+    public Absences(int id, Date dateDebut, Date dateFin, String type, Etudiant etudiants) {
         this.id = id;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -49,11 +49,11 @@ public class Absences {
         this.type = type;
     }
 
-    public Etudiants getEtudiants() {
+    public Etudiant getEtudiants() {
         return etudiants;
     }
 
-    public void setEtudiants(Etudiants etudiants) {
+    public void setEtudiants(Etudiant etudiants) {
         this.etudiants = etudiants;
     }
     
