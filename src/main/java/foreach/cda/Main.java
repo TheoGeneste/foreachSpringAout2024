@@ -5,8 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import foreach.cda.Model.Suivre;
-import foreach.cda.Services.SuivreService;
+import foreach.cda.Services.UEService;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,11 +45,24 @@ public class Main {
         //     System.out.println(cour.getFormateur().getNom());
         // }
 
-        SuivreService suivreService = new SuivreService(jdbcTemplate);
-        for(Suivre suivre : suivreService.getAll()){
-            System.out.println(suivre.getCours().getDateDebut());
-            System.out.println(suivre.getCours().getUe().getLibelle());
-            suivre.getEtudiants().sePresenter();
-        }
+        // SuivreService suivreService = new SuivreService(jdbcTemplate);
+        // for(Suivre suivre : suivreService.getAll()){
+        //     System.out.println(suivre.getCours().getDateDebut());
+        //     System.out.println(suivre.getCours().getUe().getLibelle());
+        //     suivre.getEtudiants().sePresenter();
+        // }
+
+
+        // UE ue = new UE("Spring Boot");
+        // UEService ueService  = new UEService(jdbcTemplate);
+        // System.out.println(ueService.insert(ue));
+
+        // UE ue = new UE(2,"Spring Boot");
+        // UEService ueService  = new UEService(jdbcTemplate);
+        // System.out.println(ueService.update(ue));
+
+        UEService ueService  = new UEService(jdbcTemplate);
+        System.out.println(ueService.delete(2));
+
     }
 }
