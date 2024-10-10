@@ -14,14 +14,14 @@ public class SuivreService extends DatabaseService{
         return super.getJdbcTemplate().query(sql, new SuivreWrapper());
     }
 
-    public Suivre getByEtudiantID(int id){
+    public List<Suivre> getByEtudiantID(int id){
         String sql = "SELECT * FROM Suivre WHERE FK_Etudiant=?";
-        return super.getJdbcTemplate().queryForObject(sql, new SuivreWrapper(), id);
+        return super.getJdbcTemplate().query(sql, new SuivreWrapper(), id);
     }
     
-    public Suivre getByCourID(int id){
+    public List<Suivre> getByCourID(int id){
         String sql = "SELECT * FROM Suivre WHERE FK_Cour=?";
-        return super.getJdbcTemplate().queryForObject(sql, new SuivreWrapper(), id);
+        return super.getJdbcTemplate().query(sql, new SuivreWrapper(), id);
     }
 
     public int deleteAllByEtudiantID(int id){
@@ -33,7 +33,7 @@ public class SuivreService extends DatabaseService{
         String sql = "DELETE FROM Suivre WHERE FK_Cour = ?";
         return super.getJdbcTemplate().update(sql, id);
     }
-    
+
     public int deleteAllByCourID(Cours cour){
         String sql = "DELETE FROM Suivre WHERE FK_Cour = ?";
         return super.getJdbcTemplate().update(sql, cour.getId());
