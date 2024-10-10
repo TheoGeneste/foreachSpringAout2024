@@ -1,11 +1,15 @@
 package foreach.cda;
 
-import foreach.cda.Model.UE;
-import foreach.cda.Services.UEService;
+import foreach.cda.Controllers.EtudiantController;
 
 public class Main {
     public static void main(String[] args) {
         
+        EtudiantController etudiantController = new EtudiantController();
+
+        System.out.println(etudiantController.getAll());
+        System.out.println(etudiantController.getByID(1));
+
         // EtudiantService etudiantService = new EtudiantService(jdbcTemplate);
 
         // System.out.println(etudiantService.getAll());
@@ -20,11 +24,11 @@ public class Main {
         // }
         
         
-        UEService ueService  = new UEService();
+        // UEService ueService  = new UEService();
 
-        for (UE ue : ueService.getAll()) {
-            System.out.println(ue.getLibelle());
-        }
+        // for (UE ue : ueService.getAll()) {
+        //     System.out.println(ue.getLibelle());
+        // }
 
         // AbsenceService absenceService = new AbsenceService(jdbcTemplate);
         // for (Absences absence : absenceService.getAll()) {
