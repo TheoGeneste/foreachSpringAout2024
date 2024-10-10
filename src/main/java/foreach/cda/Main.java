@@ -1,16 +1,10 @@
 package foreach.cda;
 
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-
+import foreach.cda.Model.UE;
 import foreach.cda.Services.UEService;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
-        JdbcTemplate jdbcTemplate = (JdbcTemplate) context.getBean("jdbcTemplate");
         
         // EtudiantService etudiantService = new EtudiantService(jdbcTemplate);
 
@@ -26,11 +20,11 @@ public class Main {
         // }
         
         
-        // UEService ueService  = new UEService(jdbcTemplate);
+        UEService ueService  = new UEService();
 
-        // for (UE ue : ueService.getAll()) {
-        //     System.out.println(ue.getLibelle());
-        // }
+        for (UE ue : ueService.getAll()) {
+            System.out.println(ue.getLibelle());
+        }
 
         // AbsenceService absenceService = new AbsenceService(jdbcTemplate);
         // for (Absences absence : absenceService.getAll()) {
@@ -61,8 +55,8 @@ public class Main {
         // UEService ueService  = new UEService(jdbcTemplate);
         // System.out.println(ueService.update(ue));
 
-        UEService ueService  = new UEService(jdbcTemplate);
-        System.out.println(ueService.delete(2));
+        // UEService ueService  = new UEService(jdbcTemplate);
+        // System.out.println(ueService.delete(2));
 
     }
 }

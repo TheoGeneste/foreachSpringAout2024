@@ -3,9 +3,6 @@ package foreach.cda.Wrappers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import foreach.cda.Model.Absences;
@@ -15,9 +12,7 @@ public class AbsenceWrapper implements RowMapper<Absences> {
     private EtudiantService etudiantService;
 
     public AbsenceWrapper() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml"); 
-        JdbcTemplate jdbcTemplate = (JdbcTemplate) context.getBean("jdbcTemplate");
-        this.etudiantService = new EtudiantService(jdbcTemplate);
+        this.etudiantService = new EtudiantService();
     }
 
 

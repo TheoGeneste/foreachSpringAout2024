@@ -17,10 +17,8 @@ public class SuivreWrapper implements RowMapper<Suivre> {
     private CoursService coursService;
 
     public SuivreWrapper() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("application.xml"); 
-        JdbcTemplate jdbcTemplate = (JdbcTemplate) context.getBean("jdbcTemplate");
-        this.etudiantService = new EtudiantService(jdbcTemplate);
-        this.coursService = new CoursService(jdbcTemplate);
+        this.etudiantService = new EtudiantService();
+        this.coursService = new CoursService();
     }
 
 
