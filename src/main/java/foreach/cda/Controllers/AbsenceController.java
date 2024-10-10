@@ -1,5 +1,6 @@
 package foreach.cda.Controllers;
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import foreach.cda.Model.Absences;
 import foreach.cda.Services.AbsenceService;
@@ -16,25 +17,37 @@ import foreach.cda.Services.AbsenceService;
 // Controllers
 public class AbsenceController {
     private AbsenceService absencesService;
+    private ObjectMapper objectMapper;
 
     public AbsenceController() {
         this.absencesService = new AbsenceService();
+        this.objectMapper = new ObjectMapper();
     }
 
 
     // GET
     //exemple /
     //Utilisateur va devoir aller sur /absences/
-    public List<Absences> getAll(){
-        return absencesService.getAll();
+    public String getAll(){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(absencesService.getAll());
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
 
     // GET
     // exemple /{id}
     //Utilisateur va devoir aller sur /absences/1
-    public Absences getByID(int id){
-        return absencesService.getByID(id);
+    public String getByID(int id){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(absencesService.getByID(id));
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
     //POST 

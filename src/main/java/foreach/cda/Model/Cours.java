@@ -1,6 +1,7 @@
 package foreach.cda.Model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Cours {
     private int id;
@@ -8,6 +9,7 @@ public class Cours {
     private Date dateFin;
     private UE ue;
     private Formateur formateur;
+    private List<Etudiant> etudiants;
 
     public Cours(int id, Date dateDebut, Date dateFin, UE ue, Formateur formateur) {
         this.id = id;
@@ -15,6 +17,15 @@ public class Cours {
         this.dateFin = dateFin;
         this.ue = ue;
         this.formateur = formateur;
+    }
+
+    public Cours(int id, Date dateDebut, Date dateFin, UE ue, Formateur formateur,List<Etudiant> etudiants) {
+        this.id = id;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.ue = ue;
+        this.formateur = formateur;
+        this.etudiants = etudiants;
     }
 
     public int getId() {
@@ -57,5 +68,14 @@ public class Cours {
         this.formateur = formateur;
     }
 
+    public List<Etudiant> getEtudiants() {
+        return etudiants;
+    }
+
+    public void setEtudiants(List<Etudiant> etudiants) {
+        this.etudiants = etudiants;
+    }
+ 
+    
     
 }

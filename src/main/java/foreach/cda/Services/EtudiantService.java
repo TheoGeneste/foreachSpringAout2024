@@ -17,6 +17,11 @@ public class EtudiantService extends DatabaseService{
         return super.getJdbcTemplate().queryForObject(sql, new EtudiantWrapper(),id);
    }
 
+   public List<Etudiant> getByCourID(int id){
+        String sql = "SELECT ET.* FROM Etudiants ET INNER JOIN SUIVRE SU ON SU.FK_Etudiant = ET.Id WHERE FK_Cour=?;";
+        return super.getJdbcTemplate().query(sql, new EtudiantWrapper(),id);
+   }
+
    public int insert(Etudiant etudiant){
      String sql = "INSERT INTO Etudiants(Nom,Prenom,Email,Telephone) VALUES (?,?,?,?)";
      return super.getJdbcTemplate().update(sql, etudiant.getNom(), etudiant.getPrenom(), etudiant.getEmail(), etudiant.getTelephone());

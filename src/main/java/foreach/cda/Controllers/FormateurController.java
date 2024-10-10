@@ -1,6 +1,7 @@
 package foreach.cda.Controllers;
 
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import foreach.cda.Model.Formateur;
 import foreach.cda.Services.FormateurService;
@@ -18,24 +19,36 @@ import foreach.cda.Services.FormateurService;
 // Controllers
 public class FormateurController {
     private FormateurService formateurService;
+    private ObjectMapper objectMapper;
 
     public FormateurController() {
         this.formateurService = new FormateurService();
+        this.objectMapper = new ObjectMapper();
     }
 
     // GET
     //exemple /
     //Utilisateur va devoir aller sur /formateurs/
-    public List<Formateur> getAll(){
-        return formateurService.getAll();
+    public String getAll(){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(formateurService.getAll());
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
 
     // GET
     // exemple /{id}
     //Utilisateur va devoir aller sur /formateurs/1
-    public Formateur getByID(int id){
-        return formateurService.getByID(id);
+    public String getByID(int id){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(formateurService.getByID(id));
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
     //POST 

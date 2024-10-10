@@ -1,37 +1,54 @@
 package foreach.cda.Controllers;
 
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import foreach.cda.Model.Suivre;
 import foreach.cda.Services.SuivreService;
 
 public class SuivreController {
     private SuivreService suivreService;
+    private ObjectMapper objectMapper;
 
     public SuivreController() {
         this.suivreService = new SuivreService();
+        this.objectMapper = new ObjectMapper();
     }
 
     // GET
     //exemple /
     //Utilisateur va devoir aller sur /suivre/
-    public List<Suivre> getAll(){
-        return suivreService.getAll();
+    public String getAll(){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(suivreService.getAll());
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
 
     // GET
     // exemple /{id}/suivre
     //Utilisateur va devoir aller sur /suivre/1/etudiant
-    public List<Suivre> getBySuivreID(int id){
-        return suivreService.getByEtudiantID(id);
+    public String getBySuivreID(int id){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString( suivreService.getByEtudiantID(id));
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
     // GET
     // exemple /{id}/cours
     //Utilisateur va devoir aller sur /suivre/1/cours
-    public List<Suivre> getByCourID(int id){
-        return suivreService.getByCourID(id);
+    public String getByCourID(int id){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(suivreService.getByCourID(id));
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
     //POST 

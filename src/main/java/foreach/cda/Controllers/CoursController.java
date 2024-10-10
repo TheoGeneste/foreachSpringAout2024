@@ -1,6 +1,7 @@
 package foreach.cda.Controllers;
 
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import foreach.cda.Model.Cours;
 import foreach.cda.Services.CoursService;
@@ -17,24 +18,36 @@ import foreach.cda.Services.CoursService;
 // Controllers
 public class CoursController {
     private CoursService coursService;
+    private ObjectMapper objectMapper;
 
     public CoursController() {
         this.coursService = new CoursService();
+        this.objectMapper = new ObjectMapper();
     }
 
     // GET
     //exemple /
     //Utilisateur va devoir aller sur /cours/
-    public List<Cours> getAll(){
-        return coursService.getAll();
+    public String getAll(){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(coursService.getAll());
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
 
     // GET
     // exemple /{id}
     //Utilisateur va devoir aller sur /cours/1
-    public Cours getByID(int id){
-        return coursService.getByID(id);
+    public String getByID(int id){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(coursService.getByID(id));
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
     //POST 

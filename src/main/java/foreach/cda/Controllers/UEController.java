@@ -1,6 +1,7 @@
 package foreach.cda.Controllers;
 
-import java.util.List;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import foreach.cda.Model.UE;
 import foreach.cda.Services.UEService;
@@ -17,24 +18,36 @@ import foreach.cda.Services.UEService;
 // Controllers
 public class UEController {
     private UEService ueService;
+    private ObjectMapper objectMapper;
 
     public UEController() {
         this.ueService = new UEService();
+        this.objectMapper = new ObjectMapper();
     }
 
     // GET
     //exemple /
     //Utilisateur va devoir aller sur /ue/
-    public List<UE> getAll(){
-        return ueService.getAll();
+    public String getAll(){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(ueService.getAll());
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
 
     // GET
     // exemple /{id}
     //Utilisateur va devoir aller sur /ue/1
-    public UE getByID(int id){
-        return ueService.getByID(id);
+    public String getByID(int id){
+        String jsonData = "";
+        try {
+            jsonData = objectMapper.writeValueAsString(ueService.getByID(id));
+        } catch (JsonProcessingException ex) {
+        }
+        return jsonData;
     }
 
     //POST 
